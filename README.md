@@ -1,3 +1,8 @@
+# Contributors
+David F. Calles
+María C. Mercado
+Mateo Gómez
+
 # Description
 
 Robust plate detection recognition software applied to colombian plates. From the raw, noisy and small plates images to a string of the plate using OpenCv, Numpy and Tesseract OCR.
