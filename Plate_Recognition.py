@@ -222,9 +222,8 @@ SHOW_SIZE = 0.7
 IMG_WAITKEY = 0 #Time in milisecods between images (if 0 = MANUAL)
 
 # GET image filenames
-#filename = "PARTICULAR/"
-#filename = "PARTICULAR2/"
-filename = "INTERNETTT/"
+#filename = "Example__Images/"
+
 names = glob.glob(filename+"*.jpg")
 print("Images detected: ", len(names))
 iterations = range(len(names))
