@@ -15,5 +15,6 @@ Robust plate detection recognition software applied to colombian plates. From th
 **Plate_Recognition.py:** Main code file, ready-to-run if cloning repository and all requirements are already installed.
 **requirement.txt:** Required packages for algorithms.
 
-
+# Dataset
+Due to privacy restrictions, the dataset **cannot be uploaded**. However, the used images have no greater differences with respect to images in the "Example_Images" folder.
 
