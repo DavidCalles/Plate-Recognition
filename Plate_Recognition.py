@@ -215,7 +215,7 @@ SHOW_RECTANGLES = True
 SHOW_WARPED = True
 SHOW_WARPED_POINTS = True
 SHOW_WARPED_BINARIZED = True
-SHOW_WARPED_DILATED = True
+SHOW_WARPED_ERODED = True
 
 # DEFINE size of image to be showed. (wont affed original data)
 SHOW_SIZE = 0.7
@@ -223,8 +223,8 @@ IMG_WAITKEY = 0 #Time in milisecods between images (if 0 = MANUAL)
 
 # GET image filenames
 #filename = "PARTICULAR/"
-filename = "PARTICULAR2/"
-#filename = "INTERNETTT/"
+#filename = "PARTICULAR2/"
+filename = "INTERNETTT/"
 names = glob.glob(filename+"*.jpg")
 print("Images detected: ", len(names))
 iterations = range(len(names))
@@ -328,12 +328,12 @@ for im in iterations:
     warped_gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
     
     # BINARIZATION of image
-    thresh = np.mean(warped_gray)*0.68
+    thresh = np.mean(warped_gray)*0.75
     ret,th2 = cv2.threshold(warped_gray,thresh,255,cv2.THRESH_BINARY)#100 sirve
     
     # MORPHOLOGIC 
     struct_elem_mask = cv2.getStructuringElement(cv2.MORPH_RECT,(3,3))
-    dilate_mask = cv2.dilate(th2.copy(),struct_elem_mask)
+    erode_mask = cv2.erode(th2.copy(),struct_elem_mask)
     
     #------------------------ SHOW IMAGES --------------------------
 
@@ -378,10 +378,10 @@ for im in iterations:
         if SHOW_WARPED_BINARIZED: 
             otsu_show = cv2.resize(th2, None, fx=SHOW_SIZE, fy=SHOW_SIZE)
             cv2.imshow("wapred binarized img", otsu_show)
-        if SHOW_WARPED_DILATED: 
-            dilate_show = cv2.resize(dilate_mask, None, fx=SHOW_SIZE,
+        if SHOW_WARPED_ERODED: 
+            erode_show = cv2.resize(erode_mask, None, fx=SHOW_SIZE,
                                      fy=SHOW_SIZE)
-            cv2.imshow("warped dilated img", dilate_show)
+            cv2.imshow("warped eroded img", erode_show)
         
     cv2.waitKey(IMG_WAITKEY)
     cv2.destroyAllWindows()
@@ -389,7 +389,7 @@ for im in iterations:
 
         
     # OCR: Text detection
-    text = pytesseract.image_to_string(dilate_mask,config='--psm 11')
+    text = pytesseract.image_to_string(erode_mask,config='--psm 11')
     text2 = text
     
     # ELIMINATE special chacaters ':', '-', ' ', '\n'
@@ -464,9 +464,4 @@ if SAVE:
     cv2.imwrite(SAVE_PATH+"Rectangle.jpg", rectangles_img)
     cv2.imwrite(SAVE_PATH+"Warped.jpg", warped)
     cv2.imwrite(SAVE_PATH+"Warped_Binarized.jpg", th2)
-    cv2.imwrite(SAVE_PATH+"Warped_Dilated.jpg", dilate_mask)
-    
-    
-    
-    
-        
+    cv2.imwrite(SAVE_PATH+"Warped_Eroded.jpg", erode_mask)
