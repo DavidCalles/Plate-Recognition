@@ -4,10 +4,11 @@ Robust plate detection recognition software applied to colombian plates. From th
 
 # Files
 
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
+**Example_Images:** Example images that can be used to test the algorithm, both with wrong and right result examples.
+**Image_Results:** Different steps of images processing. 
+**LINCENSE:** License file inherited from Tesseract OCR. Apache-2.0 License
+**Plate_Recognition.py:** Main code file, ready-to-run if cloning repository and all requirements are already installed.
+**requirement.txt:** Required packages for algorithms.
 
-# Requirements
-
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
 
