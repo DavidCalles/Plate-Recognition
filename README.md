@@ -1,7 +1,7 @@
 # Contributors
-David F. Calles
-María C. Mercado
-Mateo Gómez
+David F. Calles,
+María C. Mercado,
+Mateo Gómez.
 
 # Description
 
